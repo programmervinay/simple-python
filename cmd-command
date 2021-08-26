@@ -1,0 +1,6 @@
+import os
+a= os.system('cmd /k "systeminfo"')
+with open("all_info.txt","a") as f:
+    f.write(a)
+    f.close()
+
