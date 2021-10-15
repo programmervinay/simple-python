@@ -16,8 +16,6 @@ root.resizable(0,0)
 
 
 
-
-
 # key = Fernet.generate_key()
 fernet = Fernet(b'7zomxpbbjngnVbbKxfYotrlQaeFxCqS9dOEdk4v0Qus=')
 
@@ -133,7 +131,7 @@ def see_password_func():
     root_title="View Password"
     root.title(root_title)
     def see_pass(): 
-        global your_password
+        global your_password,your_pass_button_1
         input_account_name=see_name_entry.get().lower()
         def copy_text_bulider():
             clipboard.copy(f"{fernet.decrypt(passw.encode()).decode()}")
