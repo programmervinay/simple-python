@@ -5,6 +5,7 @@ from tkinter import *
 from tkinter import messagebox
 import webbrowser
 from PIL import Image,ImageTk
+import clipboard
 
 
 # making the tkinter window 
@@ -119,6 +120,7 @@ def see_password_func():
     def see_back():
         try: 
             your_password.pack_forget()
+            your_pass_button_1.pack_forget()
         except: 
             pass
         finally: 
@@ -133,6 +135,8 @@ def see_password_func():
     def see_pass(): 
         global your_password
         input_account_name=see_name_entry.get().lower()
+        def copy_text_bulider():
+            clipboard.copy(f"{fernet.decrypt(passw.encode()).decode()}")
         flag =0
         f=  open("C:\KARVIN_password_manager\password.txt",'r') 
         for line in f.readlines():
@@ -150,6 +154,8 @@ def see_password_func():
                 your_password = Label(root,text=info,font=("arial",16,"bold"),fg="purple4")
                 see_name_entry.delete(0,END)
                 your_password.pack(padx=5,pady=8)
+                your_pass_button_1= Button(root,text="Copy Password",fg="violetred1",font= ("arial",16,"bold"),command=copy_text_bulider)
+                your_pass_button_1.pack(padx=5,pady=9)
             except:
                 messagebox.showinfo("Error","Password not found !")
                 see_name_entry.delete(0,END)    
